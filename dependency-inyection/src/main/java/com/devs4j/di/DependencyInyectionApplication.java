@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 import com.devs4j.di.qualifiers.Animal;
 import com.devs4j.di.qualifiers.Avion;
@@ -21,41 +22,15 @@ public class DependencyInyectionApplication {
 	
 	private static final Logger log = LoggerFactory.getLogger(DependencyInyectionApplication.class);
 
+	@Bean
+	public String getApplicationName() {
+		return "!Devs4j rules!";
+	}
 
-	public static void main(String[] args) {
-		//SpringApplication.run(DependencyInyectionApplication.class, args);
-		
-		//Motor motor = new Motor("Xl1", 1981);
-		//Coche coche = new Coche("VW", 1986, motor);
-		
-		//System.out.println(coche);
-		
-		//Inyeccion de Dependencias por atributo
-		
-		//Perro perro = context.getBean(Perro.class);
-		//Pajaro pajaro = context.getBean(Pajaro.class);
-		//Avion avion = context.getBean(Avion.class);
-		
-		//Animal animal = context.getBean("perro", Animal.class);
-		//log.info("Animal nombre = {} edad = {}", animal.getNombre(), animal.getEdad());
-		
-		//Nido nido = context.getBean(Nido.class);
-		//nido.imprimir();
-		
-		//ConfigurableApplicationContext context =  SpringApplication.run(DependencyInyectionApplication.class, args);
-		
-		//EnviromentService enviromentService = context.getBean(EnviromentService.class);
-		
-		//log.info("Active enviroment {}", enviromentService.getEnviroment());
-				
+	public static void main(String[] args) {		
 		ConfigurableApplicationContext context =  SpringApplication.run(DependencyInyectionApplication.class, args);
-		EjemploScopeService ejemploScopeService= context.getBean(EjemploScopeService.class);
-		EjemploScopeService ejemploScopeService1= context.getBean(EjemploScopeService.class);
-		
-		log.info("Are beans equal {} ", ejemploScopeService.equals(ejemploScopeService1));
-		log.info("Are beans == {} ", ejemploScopeService==ejemploScopeService1);
-		
-		
+		String nombreAplicacion = context.getBean(String.class);
+		log.info("Nombre de Aplicacion {}", nombreAplicacion);
 		
 	}
 
