@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import com.devs4j.di.autowired.AreaCalculatorService;
 import com.devs4j.di.qualifiers.Animal;
 import com.devs4j.di.qualifiers.Avion;
 import com.devs4j.di.qualifiers.Nido;
@@ -29,8 +30,10 @@ public class DependencyInyectionApplication {
 
 	public static void main(String[] args) {		
 		ConfigurableApplicationContext context =  SpringApplication.run(DependencyInyectionApplication.class, args);
-		String nombreAplicacion = context.getBean(String.class);
-		log.info("Nombre de Aplicacion {}", nombreAplicacion);
+		
+		AreaCalculatorService calculator = context.getBean(AreaCalculatorService.class);
+		
+		log.info("Area Total {}", calculator.calcAres());
 		
 	}
 
