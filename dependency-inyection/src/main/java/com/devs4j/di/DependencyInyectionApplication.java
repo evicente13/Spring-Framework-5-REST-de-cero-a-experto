@@ -12,6 +12,7 @@ import com.devs4j.di.qualifiers.Avion;
 import com.devs4j.di.qualifiers.Nido;
 import com.devs4j.di.qualifiers.Pajaro;
 import com.devs4j.di.qualifiers.Perro;
+import com.devs4j.di.scopes.EjemploScopeService;
 import com.devs4j.diprofiles.EnviromentService;
 
 @SpringBootApplication
@@ -41,11 +42,19 @@ public class DependencyInyectionApplication {
 		//Nido nido = context.getBean(Nido.class);
 		//nido.imprimir();
 		
+		//ConfigurableApplicationContext context =  SpringApplication.run(DependencyInyectionApplication.class, args);
+		
+		//EnviromentService enviromentService = context.getBean(EnviromentService.class);
+		
+		//log.info("Active enviroment {}", enviromentService.getEnviroment());
+				
 		ConfigurableApplicationContext context =  SpringApplication.run(DependencyInyectionApplication.class, args);
+		EjemploScopeService ejemploScopeService= context.getBean(EjemploScopeService.class);
+		EjemploScopeService ejemploScopeService1= context.getBean(EjemploScopeService.class);
 		
-		EnviromentService enviromentService = context.getBean(EnviromentService.class);
+		log.info("Are beans equal {} ", ejemploScopeService.equals(ejemploScopeService1));
+		log.info("Are beans == {} ", ejemploScopeService==ejemploScopeService1);
 		
-		log.info("Active enviroment {}", enviromentService.getEnviroment());
 		
 		
 	}
