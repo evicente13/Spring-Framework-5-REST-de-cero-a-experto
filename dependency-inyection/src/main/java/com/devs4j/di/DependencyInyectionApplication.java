@@ -26,17 +26,18 @@ import com.devs4j.diprofiles.EnviromentService;
 public class DependencyInyectionApplication {
 	
 	
-	private static final Logger log = LoggerFactory.getLogger(DependencyInyectionApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(DependencyInyectionApplication.class);
 
 	@Bean
 	public String getApplicationName() {
 		return "!Devs4j rules!";
 	}
 
+	/*
 	@Bean(initMethod = "init", destroyMethod = "destroy")
 	public ExplicitBean getBean() {
 		return new ExplicitBean();
-	}
+	}*/
 	
 	public static void main(String[] args) {		
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);

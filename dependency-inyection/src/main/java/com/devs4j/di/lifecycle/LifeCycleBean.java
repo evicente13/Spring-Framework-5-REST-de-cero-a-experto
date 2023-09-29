@@ -18,6 +18,8 @@ public class LifeCycleBean implements BeanNameAware, InitializingBean, Disposabl
 	
 	private static final Logger log = LoggerFactory.getLogger(LifeCycleBean.class);
 
+	
+	//Se ejecuta durante la construccion del bean "BeanNameAware"
 	@Override
 	public void setBeanName(String name) {
 		log.info("Bean name {}", name);
@@ -39,14 +41,12 @@ public class LifeCycleBean implements BeanNameAware, InitializingBean, Disposabl
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
-		
+		log.info("After properties set method");
 	}
 
 	@Override
 	public void destroy() throws Exception {
-		// TODO Auto-generated method stub
-		
+		log.info("Destroy Method");
 	}
 	
 	
