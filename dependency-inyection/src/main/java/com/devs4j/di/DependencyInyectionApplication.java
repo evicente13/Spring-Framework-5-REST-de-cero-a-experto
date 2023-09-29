@@ -12,6 +12,7 @@ import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 import com.devs4j.di.autowired.AreaCalculatorService;
+import com.devs4j.di.lifecycle.ExplicitBean;
 import com.devs4j.di.lifecycle.LifeCycleBean;
 import com.devs4j.di.qualifiers.Animal;
 import com.devs4j.di.qualifiers.Avion;
@@ -32,6 +33,11 @@ public class DependencyInyectionApplication {
 		return "!Devs4j rules!";
 	}
 
+	@Bean(initMethod = "init", destroyMethod = "destroy")
+	public ExplicitBean getBean() {
+		return new ExplicitBean();
+	}
+	
 	public static void main(String[] args) {		
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
 		LifeCycleBean bean = context.getBean(LifeCycleBean.class);
