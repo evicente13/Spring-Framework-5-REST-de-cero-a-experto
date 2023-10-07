@@ -1,5 +1,7 @@
 package com.devs4j.di;
 
+import java.lang.annotation.Target;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +13,7 @@ import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 
+import com.devs4j.di.aop.TargetObject;
 import com.devs4j.di.autowired.AreaCalculatorService;
 import com.devs4j.di.lifecycle.ExplicitBean;
 import com.devs4j.di.lifecycle.LifeCycleBean;
@@ -42,6 +45,9 @@ public class DependencyInyectionApplication {
 	public static void main(String[] args) {		
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
 		//LifeCycleBean bean = context.getBean(LifeCycleBean.class);
+		TargetObject targetObject = context.getBean(TargetObject.class);
+		targetObject.hello("Hello World");
+		targetObject.foo();
 	}
 
 }
